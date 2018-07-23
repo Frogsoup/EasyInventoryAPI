@@ -1,0 +1,6 @@
+name: EasyInventoryAPI
+version: ${project.version}
+api-version: 1.13
+main: me.frog.inventoryapi.Core
+authors: [Frogsoup]
+description: An easy way to create inventory items.
