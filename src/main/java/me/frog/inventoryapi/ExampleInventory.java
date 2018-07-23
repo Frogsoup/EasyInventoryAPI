@@ -58,13 +58,13 @@ public class ExampleInventory extends InventoryBase {
                 new String[] {
                         "This is an example of an item",
                         "with the enchant name."
-                }, false,false));
+                }, false, false));
 
         inv.setItem(47, addSpecialButton(Material.DIAMOND, 1, ChatColor.AQUA + "Enchanted Diamond",
                 new String[] {
                         "This is an example of an item",
                         "without the enchant name."
-                }, false,true));
+                }, false, true));
 
         return inv;
     }
