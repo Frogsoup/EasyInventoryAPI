@@ -2,9 +2,11 @@ package me.frog.inventoryapi.util;
 
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.SkullMeta;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -173,6 +175,51 @@ public abstract class InventoryBase {
 
         if(hideEnchant)
             meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        stack.setItemMeta(meta);
+
+        return stack;
+    }
+
+    /**
+     * Adds a player's skull to the inventory without a
+     *  specified lore.
+     *
+     * @param player The player.
+     * @param name The name of the item.
+     * @return The updated Minecraft item.
+     */
+    public ItemStack addPlayerButton(Player player, String name) {
+        ItemStack stack = new ItemStack(Material.PLAYER_HEAD);
+        SkullMeta meta = (SkullMeta) stack.getItemMeta();
+        meta.setOwningPlayer(player);
+        meta.setDisplayName(name);
+
+        stack.setItemMeta(meta);
+
+        return stack;
+    }
+
+    /**
+     * Adds a player's skull to the inventory with a
+     *  specified lore.
+     *
+     * @param player The player.
+     * @param name The name of the item.
+     * @param desc The description, or lore, of the item.
+     * @return The updated Minecraft item.
+     */
+    public ItemStack addPlayerButton(Player player, String name, String[] desc) {
+        ItemStack stack = new ItemStack(Material.PLAYER_HEAD);
+        SkullMeta meta = (SkullMeta) stack.getItemMeta();
+        meta.setOwningPlayer(player);
+        meta.setDisplayName(name);
+
+        List<String> lore = new ArrayList<>();
+        for(String str : desc)
+            lore.add(str);
+
+        meta.setLore(lore);
+
         stack.setItemMeta(meta);
 
         return stack;
