@@ -80,7 +80,9 @@ public abstract class InventoryBase {
         ItemMeta meta = stack.getItemMeta();
         meta.setDisplayName(name);
 
-        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        if(hideAttributes)
+            meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        
         stack.setItemMeta(meta);
 
         return stack;
@@ -111,6 +113,7 @@ public abstract class InventoryBase {
 
         if(hideAttributes)
             meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        
         stack.setItemMeta(meta);
 
         return stack;
